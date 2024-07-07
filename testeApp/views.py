@@ -10,10 +10,10 @@ from rest_framework.response import Response
 
 @api_view(['POST'])
 def create_info(request):
-    serializer = InfoSerializer(data=request.data)
+    serializer = infoSerializer(data=request.data)
     
     # Check if the data already exists
-    if Info.objects.filter(**request.data).exists():
+    if info.objects.filter(**request.data).exists():
         return Response({'error': 'This data already exists'}, status=status.HTTP_400_BAD_REQUEST)
     
     if serializer.is_valid():
@@ -25,18 +25,18 @@ def create_info(request):
 @api_view(['POST'])
 def update(request, pk):
     try:
-        info = Info.objects.get(pk=pk)
-        serializer = InfoSerializer(info, data=request.data)
+        info = info.objects.get(pk=pk)
+        serializer = infoSerializer(info, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    except Info.DoesNotExist:
+    except info.DoesNotExist:
         return Response({'error': 'Info not found'}, status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
 def read(request):
-    infos = Info.objects.all()  # retrieve all existing Info objects
-    serializer = InfoSerializer(infos, many=True)  # serialize the data
+    infos = info.objects.all()  # retrieve all existing Info objects
+    serializer = infoSerializer(infos, many=True)  # serialize the data
     return Response(serializer.data)  # return the serialized data

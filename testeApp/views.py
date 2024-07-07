@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-import requests
+
 
 @api_view(['POST'])
 def create_info(request):

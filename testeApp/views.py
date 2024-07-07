@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render
 from .serializers import infoSerializer
 from .models import info

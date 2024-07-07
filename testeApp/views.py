@@ -22,13 +22,21 @@ def create_info(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-
-
-
-
 @api_view(['POST'])
-def update():
-    pass
+def update(request, pk):
+    try:
+        info = Info.objects.get(pk=pk)
+        serializer = InfoSerializer(info, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    except Info.DoesNotExist:
+        return Response({'error': 'Info not found'}, status=status.HTTP_404_NOT_FOUND)
+
 @api_view(['GET'])
-def read():
-    pass
+def read(request):
+    infos = Info.objects.all()  # retrieve all existing Info objects
+    serializer = InfoSerializer(infos, many=True)  # serialize the data
+    return Response(serializer.data)  # return the serialized data

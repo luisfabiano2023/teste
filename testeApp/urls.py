@@ -1,10 +1,7 @@
-
 from django.urls import path
-from . import views
-
-
+from .views import create_info,read,update
 urlpatterns = [
-    path('create/', views.create_info,name='create'),
-    path('read/', views.delete_info,name='read'),
-    path('update/<int:pk>/', views.update_info,name='update'),
+    path('create/', create_info,name='create'),
+    path('read/', read,name='read'),
+    path('update/<int:pk>/', update,name='update'),
 ]

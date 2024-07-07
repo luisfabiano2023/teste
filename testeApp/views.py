@@ -9,19 +9,19 @@ from rest_framework.response import Response
 # Create your views here.
 
 @api_view(['POST'])
-def create():
-    item = infoSerializer(data=request.data)
- 
-    # validating for already existing data
-    if info.objects.filter(**request.data).exists():
-        raise serializers.ValidationError('This data already exists')
- 
-    if item.is_valid():
-        item.save()
-        return Response(item.data)
+def create_info(request):
+    serializer = InfoSerializer(data=request.data)
+    
+    # Check if the data already exists
+    if Info.objects.filter(**request.data).exists():
+        return Response({'error': 'This data already exists'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-    pass
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
 
 
 

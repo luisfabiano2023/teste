@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'testeApp',
     'rest_framework',
+    'gunicorn',
 ]
 
 MIDDLEWARE = [

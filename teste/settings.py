@@ -16,9 +16,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CORS_ORIGIN_WHITELIST = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com"]
+CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com"]
+CORS_ORIGIN_WHITELIST = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+                         "https://127.0.0.1",]
+
+CSRF_TRUSTED_ORIGINS = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+                         "https://127.0.0.1",]
 
 CORS_ALLOW_ALL_ORIGINS: True
 
@@ -127,3 +131,17 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.AllowAny",),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 10,
+    "DATE_INPUT_FORMATS": ["%Y-%m-%d", "%d-%m-%Y", "%Y/%m/%d", "%d/%m/%Y"],
+    "TIME_INPUT_FORMATS": [
+        "%H:%M",
+    ],
+}

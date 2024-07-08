@@ -18,10 +18,10 @@ ALLOWED_HOSTS = ["*"]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_WHITELIST = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+CORS_ORIGIN_WHITELIST = ["https://web-994vj64ro81h.up-de-fra1-k8s-1.apps.run-on-seenode.com",
                          "https://127.0.0.1",]
 
-CSRF_TRUSTED_ORIGINS = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com",
+CSRF_TRUSTED_ORIGINS = ["https://web-994vj64ro81h.up-de-fra1-k8s-1.apps.run-on-seenode.com",
                          "https://127.0.0.1",]
 
 CORS_ALLOW_ALL_ORIGINS: True
@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     "corsheaders",
     'testeApp',
     'rest_framework',
-    
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+    "https://web-994vj64ro81h.up-de-fra1-k8s-1.apps.run-on-seenode.com/",
 ]
 
 MIDDLEWARE = [

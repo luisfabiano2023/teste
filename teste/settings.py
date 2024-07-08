@@ -23,10 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-nn4vu1sq*5+5x10&c*=%=qjrie-sq7y0xj&f^sv5zlc-350fx-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+CORS_ORIGIN_WHITELIST = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com"]
+
+CSRF_TRUSTED_ORIGINS = ["https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com"]
+
+CORS_ALLOW_ALL_ORIGINS: True
+
+CORS_ALLOW_METHODS = ["*"]
 
 # Application definition
 
@@ -37,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "corsheaders",
     'testeApp',
     'rest_framework',
     'gunicorn',

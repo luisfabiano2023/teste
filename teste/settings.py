@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'testeApp',
     'rest_framework',
-    'gunicorn',
+    
 ]
 
 MIDDLEWARE = [

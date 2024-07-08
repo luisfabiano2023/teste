@@ -27,7 +27,8 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com/'
+    'https://web-4isbbu9p3oid.up-de-fra1-k8s-1.apps.run-on-seenode.com/',
+    'api-arduino-dd2c.onrender.com'
 ]
 
 
